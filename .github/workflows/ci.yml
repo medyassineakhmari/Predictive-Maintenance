@@ -1,0 +1,42 @@
+name: MLOps CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        # Installation des outils de test et linting
+        pip install pytest flake8 httpx
+
+    - name: Lint with flake8 (Vérification de la syntaxe Python)
+      run: |
+        # Arrête le build s'il y a des erreurs de syntaxe graves
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # Affiche les avertissements pour le reste
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Test API with pytest
+      run: |
+        pytest test_api.py -v
+
+    - name: Test Docker Build
+      run: |
+        docker build -t predictive-maintenance-api:test .

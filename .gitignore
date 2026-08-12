@@ -1,0 +1,10 @@
+# Environnement virtuel
+venv/
+
+# Fichiers Python et OS
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+__results___files/
+results.zip
+ai4i2020.csv

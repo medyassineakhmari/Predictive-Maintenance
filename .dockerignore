@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.ipynb
+*.pyc
+.git/
+__results___files/
+results.zip
+ai4i2020.csv
+README.md
+test_api.py
