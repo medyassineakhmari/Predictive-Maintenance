@@ -87,4 +87,4 @@ curl -X 'POST' \
 ```
 
 ---
-*Developed by Mohammed-Yassine Akhmari - Data Science and Engineering*
+*Developed by Mohammed-Yassine Akhmari - Data Science Engineering*
