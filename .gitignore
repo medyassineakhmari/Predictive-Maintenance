@@ -1,5 +1,6 @@
 # Environnement virtuel
 venv/
+venv_train/
 
 # Fichiers Python et OS
 __pycache__/
@@ -8,3 +9,5 @@ __pycache__/
 __results___files/
 results.zip
 ai4i2020.csv
+mlruns/
+mlflow.db
